@@ -25,12 +25,24 @@ class AccountTransaction {
 }
 
 class Deposit : AccountTransaction {
+    Deposit(){
+        $this::new(0,0);
+    }
+    Deposit([int]$dollarAmount){
+        $this::new($dollarAmount,0);
+    }
     Deposit([int]$dollarAmount, [int]$decimalAmount) : base($dollarAmount, $decimalAmount){
         $this.transactionType = [TransactionType]::DepositType;
     }
 }
 
 class Withdrawl : AccountTransaction {
+    Withdrawl(){
+        $this::new(0,0);
+    }
+    Withdrawl([int]$dollarAmount){
+        $this::new($dollarAmount,0);
+    }
     Withdrawl([int]$dollarAmount, [int]$decimalAmount) : base($dollarAmount, $decimalAmount){
         $this.transactionType = [TransactionType]::WithdrawlType;
     }
