@@ -1,0 +1,20 @@
+[
+  {
+    "dollarAmount": 15,
+    "decimalAmount": 55,
+    "date": "2019-03-15T11:08:52.175063-07:00",
+    "transactionType": 0
+  },
+  {
+    "dollarAmount": 5,
+    "decimalAmount": 25,
+    "date": "2019-03-15T11:08:55.293204-07:00",
+    "transactionType": 0
+  },
+  {
+    "dollarAmount": 51,
+    "decimalAmount": 95,
+    "date": "2019-03-15T11:08:57.840266-07:00",
+    "transactionType": 0
+  }
+]

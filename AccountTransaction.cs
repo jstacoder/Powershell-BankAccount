@@ -1,54 +1,40 @@
-using namespace System.Collections.Generic;
-using namespace Powershell_Bank.AccountTransaction;
+using System;
+using System.Collections.Generic;
 
-class FileSaver {
-    static [string] $filepath = "tmpdata.json";
-    
-    static [void] SaveTransactions([IAccountTransaction[]]$transactions){
-        $transactions | ConvertTo-JSON | Add-Content -Path "$([FileSaver]::filepath)";   
-    }     
-    static [List[IAccountTransaction]] LoadTransactions(){
-        $transactions = Get-Content -Path "$([FileSaver]::filepath)" -Raw | ConvertFrom-JSON;
-        [List[AccountTransaction]]$transactionList = [List[AccountTransaction]]::new();
-        $transactions | %{
-                $transactionList += [AccountTransaction]::new($_.dollarAmount, $_.decimalAmount, $_.transactionType)#;
-       }
-        return $transactionList;
-    }
-    static [bool] CheckForFile(){
-        return Test-Path "$([FileSaver]::filepath)";
-    }
-}
+namespace Powershell_Bank.Account {
 
-
-class AccountTransaction {
-    [Parameter(Mandatory=$true)]
-    [int]$dollarAmount = 0;
-    [int]$decimalAmount = 0;
-    [datetime]$date = [datetime]::now;   
-    [TransactionType] $transactionType;
-
-
-    AccountTransaction([int] $dollarAmount, [int]$decimalAmount, [TransactionType]$type){
-        $this.dollarAmount = $dollarAmount;
-        $this.decimalAmount = $decimalAmount;
-        $this.transactionType = $type;
+    public enum TransactionType  {
+        DepositType,
+        WithdrawlType
     }
 
-    AccountTransaction([int] $dollarAmount, [TransactionType]$type) {
-        $this::new($dollarAmount, 0, $type);
-    }    
-    AccountTransaction([TransactionType]$type){
-        $this::new(0,0,$type);
+    public interface IAccountTransaction {
+        int DollarAmount { get; set; }
+        int DecimalAmount { get; set; }
+        DateTime Date { get; }
+        TransactionType transactionType { get; }
     }
-    [Deposit] static MakeDeposit([AccountTransaction] $transaction){
-        return new-object -typename Deposit -ArgumentList $transaction.dollarAmount, $transaction.decimalAmount
-    }
-    [Deposit] MakeDeposit(){
-        return $this.MakeDeposit($this);
+
+    public class AccountTransaction: IAccountTransaction {
+        
+         public int DollarAmount {get; set; } = 0;
+         public int DecimalAmount { get; set; } = 0;
+         public DateTime Date { get; } = DateTime.Now;  
+         public TransactionType transactionType { get; }
+
+
+        public AccountTransaction(int dollarAmount, int decimalAmount){
+            DollarAmount = dollarAmount;
+            DecimalAmount = decimalAmount;                        
+        }
+
+        public AccountTransaction(int dollarAmount) : this(dollarAmount, 0) { }    
+        public AccountTransaction() : this(0,0) {}
+
     }
 }
 
+/*
 class Deposit : AccountTransaction {
     Deposit([int]$dollarAmount, [int]$decimalAmount) : 
         base($dollarAmount, $decimalAmount, [TransactionType]::DepositType){}
@@ -150,4 +136,4 @@ class BankAccount {
         [Console]::WriteLine($decimalAmount);
         $this.total = "`$${dollarAmount}.${decimalAmount}";
     }
-}
+}*/

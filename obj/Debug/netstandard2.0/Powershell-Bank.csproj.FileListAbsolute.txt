@@ -1,0 +1,9 @@
+/Users/kyle/git/Powershell-Bank/obj/Debug/netstandard2.0/Powershell-Bank.csprojAssemblyReference.cache
+/Users/kyle/git/Powershell-Bank/obj/Debug/netstandard2.0/Powershell-Bank.csproj.CoreCompileInputs.cache
+/Users/kyle/git/Powershell-Bank/obj/Debug/netstandard2.0/Powershell-Bank.AssemblyInfoInputs.cache
+/Users/kyle/git/Powershell-Bank/obj/Debug/netstandard2.0/Powershell-Bank.AssemblyInfo.cs
+/Users/kyle/git/Powershell-Bank/bin/Debug/netstandard2.0/Powershell_Bank.deps.json
+/Users/kyle/git/Powershell-Bank/bin/Debug/netstandard2.0/Powershell_Bank.dll
+/Users/kyle/git/Powershell-Bank/bin/Debug/netstandard2.0/Powershell_Bank.pdb
+/Users/kyle/git/Powershell-Bank/obj/Debug/netstandard2.0/Powershell_Bank.dll
+/Users/kyle/git/Powershell-Bank/obj/Debug/netstandard2.0/Powershell_Bank.pdb
